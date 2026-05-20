@@ -1,12 +1,11 @@
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
-  font-family: "Inter", Arial, sans-serif;
-  background: linear-gradient(to bottom right, #eef4ff, #f8fbff);
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f7fb;
   color: #1e293b;
 }
 
@@ -21,8 +20,7 @@ body {
 }
 
 .header h1 {
-  font-size: 42px;
-  font-weight: 700;
+  font-size: 40px;
   color: #0f172a;
   margin-bottom: 10px;
 }
@@ -30,9 +28,6 @@ body {
 .header p {
   font-size: 17px;
   color: #64748b;
-  max-width: 650px;
-  margin: 0 auto;
-  line-height: 1.6;
 }
 
 .calculator {
@@ -45,53 +40,38 @@ body {
 
 .form-section,
 .results-section {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
+  background: white;
   padding: 30px;
-  border-radius: 24px;
-  box-shadow:
-    0 10px 25px rgba(15, 23, 42, 0.08),
-    0 4px 10px rgba(15, 23, 42, 0.04);
-  transition: transform 0.2s ease;
-}
-
-.form-section:hover,
-.results-section:hover {
-  transform: translateY(-2px);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 h2 {
   font-size: 20px;
   margin-top: 28px;
   margin-bottom: 16px;
-  color: #0f172a;
-  border-left: 4px solid #2563eb;
-  padding-left: 10px;
+  color: #003b5c;
 }
 
 label {
   display: block;
   margin-top: 18px;
   margin-bottom: 6px;
-  font-weight: 600;
-  color: #334155;
+  font-weight: bold;
 }
 
 input {
   width: 100%;
   padding: 14px;
-  border: 1px solid #dbe4f0;
-  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
   font-size: 15px;
-  background: #f8fafc;
-  transition: all 0.2s ease;
 }
 
 input:focus {
-  border-color: #2563eb;
+  border-color: #0077b6;
   outline: none;
-  background: white;
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.15);
 }
 
 small {
@@ -99,31 +79,23 @@ small {
   margin-top: 6px;
   color: #64748b;
   font-size: 13px;
-  line-height: 1.4;
 }
 
 button {
   width: 100%;
   margin-top: 30px;
-  padding: 16px;
+  padding: 15px;
   border: none;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+  border-radius: 12px;
+  background: #0077b6;
   color: white;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: bold;
   cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
 }
 
 button:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(135deg, #1d4ed8, #0284c7);
-}
-
-button:active {
-  transform: scale(0.98);
+  background: #005f8f;
 }
 
 .empty {
@@ -140,15 +112,9 @@ button:active {
 }
 
 .result-card {
-  background: linear-gradient(to right, #f8fbff, #eef5ff);
-  padding: 20px;
-  border-radius: 16px;
-  border: 1px solid #dbeafe;
-  transition: all 0.2s ease;
-}
-
-.result-card:hover {
-  transform: scale(1.01);
+  background: #f1f5f9;
+  padding: 18px;
+  border-radius: 14px;
 }
 
 .result-card span {
@@ -160,27 +126,22 @@ button:active {
 
 .result-card strong {
   font-size: 24px;
-  color: #0f172a;
+  color: #003b5c;
 }
 
 .chart-placeholder {
   margin-top: 20px;
-  padding: 50px;
+  padding: 45px;
   text-align: center;
-  border: 2px dashed #93c5fd;
-  border-radius: 18px;
-  background: #f8fbff;
+  border: 2px dashed #94a3b8;
+  border-radius: 16px;
+  background: #f8fafc;
   color: #64748b;
-  font-weight: 500;
 }
 
 @media (max-width: 900px) {
   .calculator {
     grid-template-columns: 1fr;
-  }
-
-  .app {
-    padding: 20px;
   }
 
   .header h1 {
@@ -189,14 +150,13 @@ button:active {
 }
 
 @media (max-width: 500px) {
+  .app {
+    padding: 20px 14px;
+  }
+
   .form-section,
   .results-section {
     padding: 22px;
-    border-radius: 18px;
-  }
-
-  button {
-    padding: 14px;
   }
 
   .header h1 {

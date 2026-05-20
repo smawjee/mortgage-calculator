@@ -22,21 +22,28 @@ function App() {
   const calculateMortgage = () => {
     const price = Number(form.propertyPrice);
     const deposit = Number(form.deposit);
-    const interest = Number(form.interestRate) / 100 / 12;
-    const months = Number(form.termYears) * 12;
+    const annualRate = Number(form.interestRate);
+    const years = Number(form.termYears);
 
-    const loanAmount = price - deposit;
-
-    if (!price || !deposit || !interest || !months) {
+    if (!price || !deposit || !annualRate || !years) {
       alert("Please fill in all required fields.");
       return;
     }
 
-    const monthlyPayment =
-      (loanAmount * interest * Math.pow(1 + interest, months)) /
-      (Math.pow(1 + interest, months) - 1);
+    if (deposit >= price) {
+      alert("Deposit cannot be greater than or equal to the property price.");
+      return;
+    }
 
-    const totalRepayment = monthlyPayment * months;
+    const loanAmount = price - deposit;
+    const monthlyRate = annualRate / 100 / 12;
+    const totalMonths = years * 12;
+
+    const monthlyPayment =
+      (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) /
+      (Math.pow(1 + monthlyRate, totalMonths) - 1);
+
+    const totalRepayment = monthlyPayment * totalMonths;
     const totalInterest = totalRepayment - loanAmount;
 
     setResult({
