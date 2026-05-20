@@ -19,41 +19,29 @@ function App() {
     });
   };
 
-  const calculateMortgage = () => {
-    const price = Number(form.propertyPrice);
-    const deposit = Number(form.deposit);
-    const annualRate = Number(form.interestRate);
-    const years = Number(form.termYears);
-
-    if (!price || !deposit || !annualRate || !years) {
-      alert("Please fill in all required fields.");
-      return;
-    }
-
-    if (deposit >= price) {
-      alert("Deposit cannot be greater than or equal to the property price.");
-      return;
-    }
-
-    const loanAmount = price - deposit;
-    const monthlyRate = annualRate / 100 / 12;
-    const totalMonths = years * 12;
-
-    const monthlyPayment =
-      (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) /
-      (Math.pow(1 + monthlyRate, totalMonths) - 1);
-
-    const totalRepayment = monthlyPayment * totalMonths;
-    const totalInterest = totalRepayment - loanAmount;
-
-    setResult({
-      loanAmount,
-      monthlyPayment,
-      totalRepayment,
-      totalInterest,
+ const calculateMortgage = async () => {
+  try {
+    const response = await fetch("http://localhost:5000/calculate-mortgage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
     });
-  };
 
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.error);
+      return;
+    }
+
+    setResult(data);
+  } catch (error) {
+    alert("Unable to connect to backend server.");
+  }
+ };
+  
   return (
     <div className="app">
       <header className="header">
